@@ -70,8 +70,8 @@ public class CoolWeatherDB {
 			do {
 				Province province = new Province();
 				province.setId(cursor.getInt(cursor.getColumnIndex("id")));
-				province.setProvinceName(cursor.getString(cursor.getColumnIndex("provinceName")));
-				province.setProvinceCode(cursor.getString(cursor.getColumnIndex("provinceCode")));
+				province.setProvinceName(cursor.getString(cursor.getColumnIndex("province_name")));
+				province.setProvinceCode(cursor.getString(cursor.getColumnIndex("province_code")));
 				list.add(province);
 			} while (cursor.moveToNext());
 		}
@@ -104,9 +104,9 @@ public class CoolWeatherDB {
 			do {
 				City city = new City();
 				city.setId(cursor.getInt(cursor.getColumnIndex("id")));
-				city.setCityName(cursor.getString(cursor.getColumnIndex("cityName")));
-				city.setCityCode(cursor.getString(cursor.getColumnIndex("cityCode")));
-				city.setProvinceId(cursor.getInt(cursor.getColumnIndex("provinceId")));
+				city.setCityName(cursor.getString(cursor.getColumnIndex("city_name")));
+				city.setCityCode(cursor.getString(cursor.getColumnIndex("city_code")));
+				city.setProvinceId(cursor.getInt(cursor.getColumnIndex("province_id")));
 				list.add(city);
 			} while (cursor.moveToNext());
 		}
@@ -120,10 +120,10 @@ public class CoolWeatherDB {
 	public  void saveCounty(County county){
 		if(county != null){
 			ContentValues values = new ContentValues();
-			values.put("city_name", county.getCountyName());
-			values.put("city_code", county.getCountyCode());
+			values.put("county_name", county.getCountyName());
+			values.put("county_code", county.getCountyCode());
 			values.put("city_id", county.getCityId());
-			db.insert("City", null, values);
+			db.insert("County", null, values);
 		}
 	}
 	
